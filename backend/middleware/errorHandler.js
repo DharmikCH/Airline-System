@@ -14,6 +14,13 @@ function sendError(res, status, code, message) {
 // returns 500 for bad user input: a validation failure or a malformed id is
 // the caller's mistake, so it must come back as a 4xx.
 function errorHandler(err, req, res, next) {
+  // express.json() could not parse the request body. body-parser raises this
+  // as a SyntaxError, which would otherwise fall through to the 500 branch
+  // below even though the request itself is what is malformed.
+  if (err.type === 'entity.parse.failed') {
+    return sendError(res, 400, 'INVALID_JSON', 'The request body is not valid JSON.');
+  }
+
   // Mongoose rejected the document, e.g. a missing required field or a number
   // outside its allowed range.
   if (err.name === 'ValidationError') {

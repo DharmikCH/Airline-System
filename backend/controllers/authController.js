@@ -3,6 +3,17 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { sendError } = require('../middleware/errorHandler');
 
+// A value counts as usable text only if it really is a string.
+//
+// A JSON body can legally contain { "email": { "$ne": null } }. Calling
+// .toLowerCase() on that object throws, which would surface as a 500 for what
+// is really bad input. Rejecting non-strings here also stops the object from
+// ever reaching the query: passing it straight to findOne would ask MongoDB
+// for "any user whose email is not null", which is how NoSQL injection works.
+function isText(value) {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
 // POST /api/auth/register
 async function register(req, res, next) {
   try {
@@ -10,8 +21,8 @@ async function register(req, res, next) {
 
     // Checked here rather than left to Mongoose so the caller gets one clear
     // message instead of a schema error, and never a 500 for a missing field.
-    if (!name || !email || !password) {
-      return sendError(res, 400, 'VALIDATION_ERROR', 'Name, email and password are required.');
+    if (!isText(name) || !isText(email) || !isText(password)) {
+      return sendError(res, 400, 'VALIDATION_ERROR', 'Name, email and password are required, and must be text.');
     }
 
     const existing = await User.findOne({ email: email.toLowerCase() });
@@ -42,8 +53,8 @@ async function login(req, res, next) {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      return sendError(res, 400, 'VALIDATION_ERROR', 'Email and password are required.');
+    if (!isText(email) || !isText(password)) {
+      return sendError(res, 400, 'VALIDATION_ERROR', 'Email and password are required, and must be text.');
     }
 
     // password_hash is select:false on the schema, so it has to be asked for

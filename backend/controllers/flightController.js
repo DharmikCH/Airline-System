@@ -10,13 +10,21 @@ function isMissing(value) {
   return value === undefined || value === null || value === '';
 }
 
+// Express turns ?from[$ne]= into an object and ?from=a&from=b into an array,
+// so a query string on its own can hand a controller something that is not a
+// string. Calling .trim() on it would throw and become a 500, and passing it
+// to the query would let the caller shape the filter themselves.
+function isText(value) {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
 // GET /api/flights/search?from=&to=&date=
 async function searchFlights(req, res, next) {
   try {
     const { from, to, date } = req.query;
 
-    if (isMissing(from) || isMissing(to) || isMissing(date)) {
-      return sendError(res, 400, 'VALIDATION_ERROR', 'from, to and date are all required.');
+    if (!isText(from) || !isText(to) || !isText(date)) {
+      return sendError(res, 400, 'VALIDATION_ERROR', 'from, to and date are all required, and must be text.');
     }
 
     // A date arrives as "2026-09-20" but flight_date is a full timestamp, so
