@@ -7,6 +7,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const flightRoutes = require('./routes/flightRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 const { errorHandler, sendError } = require('./middleware/errorHandler');
 
 const app = express();
@@ -30,8 +31,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/flights', flightRoutes);
-
-// Booking routes are mounted here in a later stage.
+app.use('/api/bookings', bookingRoutes);
 
 // A request to a path that does not exist. Without this Express would answer
 // with its own HTML page, which would be the one error response in the API
