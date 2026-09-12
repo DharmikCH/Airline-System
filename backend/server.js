@@ -10,6 +10,26 @@ const flightRoutes = require('./routes/flightRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const { errorHandler, sendError } = require('./middleware/errorHandler');
 
+// Stop before starting if the configuration is incomplete.
+//
+// Without JWT_SECRET the server still starts and registration still works, but
+// every login fails with a 500 whose real cause only appears in this console.
+// Refusing to start says plainly what is wrong, once, to whoever started it.
+const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET'];
+const missingEnv = REQUIRED_ENV.filter((name) => !process.env[name]);
+
+if (missingEnv.length > 0) {
+  console.error('Cannot start: missing environment variable(s): ' + missingEnv.join(', '));
+  console.error('Copy .env.example to .env and fill in the values.');
+  process.exit(1);
+}
+
+// Not fatal, but worth saying out loud: cors() with an undefined origin allows
+// every origin, which is not what this project intends.
+if (!process.env.CLIENT_URL) {
+  console.warn('Warning: CLIENT_URL is not set, so CORS will allow any origin.');
+}
+
 const app = express();
 
 connectDB();
