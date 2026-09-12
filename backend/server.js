@@ -5,6 +5,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const { errorHandler, sendError } = require('./middleware/errorHandler');
 
 const app = express();
 
@@ -25,7 +27,20 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-// Routes for auth, flights and bookings are mounted here in later stages.
+app.use('/api/auth', authRoutes);
+
+// Flight and booking routes are mounted here in later stages.
+
+// A request to a path that does not exist. Without this Express would answer
+// with its own HTML page, which would be the one error response in the API
+// that is not the agreed JSON shape.
+app.use((req, res) => {
+  sendError(res, 404, 'ROUTE_NOT_FOUND', 'That endpoint does not exist.');
+});
+
+// Must be registered last: Express only treats a four-argument function as an
+// error handler, and it can only catch errors from middleware added above it.
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
