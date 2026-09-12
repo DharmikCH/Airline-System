@@ -54,9 +54,12 @@ async function createBooking(req, res, next) {
       return sendError(res, 409, 'FLIGHT_INACTIVE', 'This flight is no longer available for booking.');
     }
 
-    const startOfToday = new Date();
-    startOfToday.setHours(0, 0, 0, 0);
-    if (flight.flight_date < startOfToday) {
+    // Deliberately the same check cancellation uses, so the two cannot
+    // disagree. Comparing flight_date alone would leave a flight that took off
+    // earlier this morning still bookable, and the passenger who booked it
+    // would then be refused a cancellation because that check is precise to
+    // the departure time.
+    if (departureInstant(flight) <= new Date()) {
       return sendError(res, 409, 'FLIGHT_IN_PAST', 'That flight has already departed.');
     }
 
