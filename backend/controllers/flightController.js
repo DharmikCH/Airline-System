@@ -18,6 +18,22 @@ function isText(value) {
   return typeof value === 'string' && value.trim() !== '';
 }
 
+// GET /api/flights  (admin)
+//
+// Added 2026-09-29, see API-CHANGELOG.md. Search needs a route and a date, so
+// without this an admin had no way to see the whole schedule in one place.
+async function listFlights(req, res, next) {
+  try {
+    // Inactive flights are included on purpose: an admin needs to see a
+    // deactivated flight in order to reactivate it.
+    const flights = await Flight.find().sort({ flight_date: 1, departure_time: 1 });
+
+    return res.status(200).json(flights.map(addDisplayFields));
+  } catch (err) {
+    return next(err);
+  }
+}
+
 // GET /api/flights/search?from=&to=&date=
 async function searchFlights(req, res, next) {
   try {
@@ -199,4 +215,4 @@ async function deleteFlight(req, res, next) {
   }
 }
 
-module.exports = { searchFlights, getFlightById, createFlight, updateFlight, deleteFlight };
+module.exports = { listFlights, searchFlights, getFlightById, createFlight, updateFlight, deleteFlight };

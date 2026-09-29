@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  searchFlights, getFlightById, createFlight, updateFlight, deleteFlight
+  listFlights, searchFlights, getFlightById, createFlight, updateFlight, deleteFlight
 } = require('../controllers/flightController');
 const { protect, adminOnly } = require('../middleware/auth');
 
@@ -12,6 +12,7 @@ router.get('/search', searchFlights);
 router.get('/:id', getFlightById);
 
 // protect runs first so that adminOnly has req.user to check.
+router.get('/', protect, adminOnly, listFlights);
 router.post('/', protect, adminOnly, createFlight);
 router.put('/:id', protect, adminOnly, updateFlight);
 router.delete('/:id', protect, adminOnly, deleteFlight);

@@ -128,6 +128,7 @@ any endpoint.
 
 | Method | Path | Success | Auth |
 |---|---|---|---|
+| GET | `/flights` | `200 [flight, ...]` every flight, including inactive | admin |
 | GET | `/flights/search?from=&to=&date=` | `200 [flight, ...]` | none |
 | GET | `/flights/:id` | `200 {"flight": {...}}` | none |
 | POST | `/flights` | `201 {"flight": {...}}` | admin |
