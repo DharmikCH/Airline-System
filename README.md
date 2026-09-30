@@ -1,11 +1,70 @@
-# Airline Reservation System
+# Airway — Airline Reservation System
 
-A web-based airline reservation system built as a fifth-semester Software Engineering & Project
-Management course project at Dayananda Sagar University. The team of 10 follows the **Waterfall
-model**; the SRS and SDD are approved and frozen, and the implementation follows that approved
-design.
+![Airway: domestic flight booking, drawn like an approach chart](docs/screenshots/airway-hero.png)
+
+**Airway** is a web-based airline reservation system for domestic flights between seven Indian
+airports. It was built as a fifth-semester Software Engineering & Project Management course project
+at Dayananda Sagar University. The team of 10 follows the **Waterfall model**; the SRS and SDD are
+approved and frozen, and the implementation follows that approved design.
+
+Passengers pick a route on a chart of India, book a seat, and get a six-character PNR. Admins manage
+the schedule and see every booking. The frontend is styled like an aeronautical approach chart.
 
 The project runs **locally only** — there is no deployment.
+
+---
+
+## Screenshots
+
+| | |
+|---|---|
+| ![The PNR: a booking code you cannot misread](docs/screenshots/airway-pnr.png) | ![Airway on a phone](docs/screenshots/airway-mobile.png) |
+| **The PNR.** Six ruled cells, no O, I, 0 or 1, printed in cell by cell after booking. | **On a phone.** The same chart, results and ticket at 390 px. |
+
+![Admin console: flights and every booking](docs/screenshots/airway-admin.png)
+
+<details>
+<summary>More screens</summary>
+
+| Search results | Sold-out flight |
+|---|---|
+| ![Results for BLR to DEL](docs/screenshots/desktop-results.png) | ![A sold-out flight shown hatched](docs/screenshots/desktop-soldout.png) |
+
+| Flight page and booking form | Ticket |
+|---|---|
+| ![Flight page with plan view and booking form](docs/screenshots/desktop-flight.png) | ![Ticket with PNR](docs/screenshots/desktop-ticket.png) |
+
+| Cancelled ticket | My trips |
+|---|---|
+| ![A cancelled ticket, hatched](docs/screenshots/desktop-ticket-cancelled.png) | ![My trips](docs/screenshots/desktop-trips.png) |
+
+| Admin: flights | Admin: bookings |
+|---|---|
+| ![Admin flights table](docs/screenshots/desktop-admin-flights.png) | ![Admin bookings table](docs/screenshots/desktop-admin-bookings.png) |
+
+</details>
+
+---
+
+## Quick start
+
+You need Node.js 20 or newer and MongoDB (local, or an Atlas connection string).
+
+```bash
+# Terminal 1: backend on http://localhost:5000
+cd backend
+npm install
+cp .env.example .env      # then fill in MONGO_URI and JWT_SECRET
+npm run seed              # wipes the database and loads demo data
+npm start
+
+# Terminal 2: frontend on http://localhost:5173
+cd frontend
+npm install
+npm run dev
+```
+
+Open <http://localhost:5173> and sign in with one of the [demo accounts](#loading-demo-data).
 
 ---
 
@@ -13,8 +72,12 @@ The project runs **locally only** — there is no deployment.
 
 ```
 Airline-System/
-├── backend/     Node.js + Express + MongoDB REST API  (complete)
-└── frontend/    React app (not scaffolded yet)
+├── backend/          Node.js + Express + MongoDB REST API
+├── frontend/         React + Vite web app ("Airway")
+├── docs/screenshots/ Images used in this README
+├── PRODUCT.md        Who the app is for, its purpose and constraints
+├── DESIGN.md         The visual design system: colours, type, spacing, rules
+└── API-CHANGELOG.md  Dated record of any approved change to the API contract
 ```
 
 ---
@@ -88,6 +151,90 @@ curl http://localhost:5000/api/health
 ```
 
 Expected response: `{ "status": "ok" }`
+
+---
+
+## Frontend
+
+### Stack
+
+- React 19 with React Router 7
+- Vite 8 (dev server and build)
+- Plain CSS with design tokens in `src/styles/tokens.css`; no UI or CSS libraries
+- The route chart and plan views are hand-drawn SVG built from real airport coordinates
+
+### Setup and running
+
+```bash
+cd frontend
+npm install
+npm run dev       # dev server on http://localhost:5173
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
+```
+
+The backend must be running on port 5000. To point the app at a different API, create
+`frontend/.env.local` (gitignored) with:
+
+```
+VITE_API_URL=http://localhost:5000/api
+```
+
+Vite is pinned to port **5173** (`strictPort`). If that port is busy it fails with an error instead
+of moving to 5174, because the backend's CORS setting (`CLIENT_URL`) only allows 5173 and a silent
+port change would surface as a confusing CORS error.
+
+### Screens
+
+| Path | Screen | Access |
+|---|---|---|
+| `/` | Search: pick From/To on the chart (or the boxes), and the route draws itself | anyone |
+| `/flights?from=&to=&date=` | Results for one route and day, with previous/next day | anyone |
+| `/flights/:id` | Flight page: facts, plan view, fare and the booking form | anyone (booking needs sign-in) |
+| `/login`, `/register` | Sign in and create an account | anyone |
+| `/bookings/:pnr` | Ticket: PNR, status, route, print and cancel | signed in, own bookings |
+| `/trips` | My trips: upcoming, past and cancelled | signed in |
+| `/find` | Find a booking by PNR | signed in |
+| `/admin/flights` | All flights with Upcoming / Departed / Withdrawn / All filters; withdraw and reinstate | admin |
+| `/admin/flights/new`, `/admin/flights/:id/edit` | Create or edit a flight | admin |
+| `/admin/bookings` | Every booking, filterable by PNR, passenger, email or flight | admin |
+
+### How it is organised
+
+```
+frontend/src/
+├── main.jsx, App.jsx   Router, auth provider and the route table
+├── lib/                api.js (the only place that calls the backend), auth.jsx,
+│                       cities.js (the seven airports), format.js, lastSearch.js
+├── components/         Shell, BriefingStrip (search form), RouteChart, RouteInset,
+│                       FlightRow, PnrMark
+├── pages/              One file per screen; admin screens in pages/admin/
+└── styles/             tokens.css first, then base, shell and one file per area
+```
+
+### Things the frontend does on purpose
+
+- **Every backend error has a screen.** `api.js` turns `{ error: { code, message } }` into an
+  `ApiError`. Pages branch on the code: `NO_SEATS_AVAILABLE` says the last seat has just gone and
+  refreshes the seat count, `FLIGHT_IN_PAST` and `FLIGHT_INACTIVE` explain why booking is closed, and
+  `INVALID_TOKEN` signs the user out and says the 24-hour session ended.
+- **Unavailable means hatched, not red.** Sold-out, departed, withdrawn and cancelled items use the
+  chart's terrain hatching. Magenta is kept for the chosen route and for actions.
+- **Times are never formatted in the browser.** Every time on screen is `departure_time_display`,
+  `arrival_time_display` or `duration_display` from the API. Only prices and dates are formatted.
+- **Dates are read in UTC**, matching how the backend stores `flight_date`.
+- **"Departed" labels use the backend's own rule** (flight date at midnight UTC plus departure
+  minutes), so a row never shows as bookable when the backend would refuse it.
+- **The last search is remembered** in `localStorage` and offered again on the search page.
+- **Distance and track** on the chart are great-circle geometry calculated from the airport
+  coordinates in `cities.js`. They are not flight data.
+
+### Design
+
+The visual system (chart-paper background, black ink, 1px ruled boxes, square corners, one magenta
+accent, terrain hatching) is documented in [DESIGN.md](DESIGN.md), with the product brief in
+[PRODUCT.md](PRODUCT.md). Chart lettering uses Bahnschrift, which ships with Windows. On macOS or
+Linux it falls back to a similar narrow sans-serif, because no font files are bundled.
 
 ---
 
@@ -306,8 +453,9 @@ seat is returned exactly once.
 | 4 | Flight search, get by id, admin create/edit/soft-delete | Done |
 | 5 | PNR generation and the booking controller | Done |
 | 6 | `seed.js` | Done |
+| 7 | React frontend: search, results, booking, ticket, trips, PNR lookup, admin console | Done |
 
-The backend is feature complete. The frontend has not been started.
+The backend and the frontend are both feature complete.
 
 ---
 
@@ -319,3 +467,7 @@ The backend is feature complete. The frontend has not been started.
   single objects come back wrapped, and population differs per endpoint.
 - **Never format a flight time yourself.** Use `departure_time_display`, `arrival_time_display` and
   `duration_display`. That is what they are for.
+- **Call the backend only through `frontend/src/lib/api.js`.** It adds the login token and turns every
+  error into an `ApiError` with a `code` the page can branch on.
+- **Take colours, sizes and spacing from `frontend/src/styles/tokens.css`**, and read
+  [DESIGN.md](DESIGN.md) before adding a screen so it matches the rest of the app.

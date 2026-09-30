@@ -1,0 +1,88 @@
+/* Airway design tokens.
+   The whole app is drawn like an aeronautical chart: pale chart paper, black
+   ink, hairline ruled boxes, and one magenta that means "you can act on this".
+   Every colour, size and curve comes from here. */
+
+:root {
+  color-scheme: light;
+
+  /* Paper and ink */
+  --paper: #f4f3ee;
+  --paper-2: #eae8e0;      /* panels, table heads, the chart margin */
+  --paper-3: #ffffff;      /* form fields, so typing areas read as blank */
+  --ink: #15171a;
+  --ink-2: #474a50;        /* secondary text, 8.1:1 on --paper */
+  --ink-3: #62656b;        /* hints and captions, 5.4:1 on --paper */
+  --rule: #15171a;
+  --rule-soft: #c9c6bb;    /* graticule, row dividers */
+
+  /* Magenta: the only accent, used only for things you can act on and for
+     the route you have chosen. 6.9:1 on --paper. */
+  --magenta: #a51f63;
+  --magenta-hover: #871650;
+  --magenta-wash: #f3e3eb;
+  --on-magenta: #ffffff;
+
+  /* Blue: information, never action. */
+  --blue: #1f5e99;
+  --blue-wash: #e2ebf3;
+
+  /* Terrain: the hatching that marks anything you cannot book. */
+  --terrain: #ddd3b7;
+  --terrain-line: #b3a57f;
+  --hatch: repeating-linear-gradient(
+    -45deg,
+    var(--terrain-line) 0 1px,
+    transparent 1px 7px
+  ), var(--terrain);
+
+  --hatch-light: repeating-linear-gradient(
+    -45deg,
+    rgb(179 165 127 / 0.55) 0 1px,
+    transparent 1px 11px
+  ), #e9e2cf;
+
+  /* Field errors only. Refusals from the backend use hatching instead. */
+  --alert: #9a2b16;
+
+  /* Type. Bahnschrift is Windows' DIN, the lettering of charts and signage;
+     the fallbacks keep the same narrow, engineered character. */
+  --font-chart: 'Bahnschrift', 'DIN Alternate', 'D-DIN', 'Roboto Condensed', 'Arial Narrow', sans-serif;
+  --font-text: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-pnr: 6rem;
+
+  /* Spacing on a 4px step */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  --hairline: 1px solid var(--rule);
+  --hairline-soft: 1px solid var(--rule-soft);
+
+  --page-max: 1240px;
+  --gutter: 32px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --fast: 160ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 16px;
+    --text-pnr: 4.5rem;
+    --text-2xl: 2rem;
+  }
+}

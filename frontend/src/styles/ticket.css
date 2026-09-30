@@ -1,0 +1,256 @@
+/* The ticket: the PNR as the chart's index number, huge and unmistakable. */
+
+.ticket-page {
+  display: grid;
+  gap: var(--s4);
+  max-width: 960px;
+}
+
+.ticket-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  max-width: none;
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--blue);
+  background: var(--blue-wash);
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.ticket-banner.is-cancel {
+  border-color: var(--ink);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.ticket {
+  position: relative;
+  border: var(--hairline);
+  background: var(--paper);
+}
+
+.ticket-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-bottom: var(--hairline);
+}
+
+.ticket-pnr {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s5);
+  border-right: var(--hairline);
+}
+
+.ticket-pnr-note {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+
+.pnr {
+  display: flex;
+  width: fit-content;
+  border: 2px solid var(--ink);
+}
+
+.pnr-cell {
+  display: grid;
+  place-items: center;
+  width: 0.78em;
+  height: 1.12em;
+  border-right: 1px solid var(--ink);
+  font-family: var(--font-chart);
+  font-size: var(--text-pnr);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.pnr-cell:last-child {
+  border-right: none;
+}
+
+/* Straight after booking the six characters print in, left to right, each
+   wiping up from its baseline with a magenta bar that settles to ink. */
+.pnr.is-revealing .pnr-cell {
+  animation: pnr-print 520ms var(--ease-out) both;
+  animation-delay: calc(180ms + var(--i) * 110ms);
+}
+
+.pnr.is-revealing {
+  animation: pnr-frame 400ms var(--ease-out) both;
+}
+
+@keyframes pnr-print {
+  0% {
+    clip-path: inset(100% 0 0 0);
+    background: var(--magenta);
+    color: var(--on-magenta);
+  }
+  55% {
+    clip-path: inset(0 0 0 0);
+    background: var(--magenta);
+    color: var(--on-magenta);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    background: transparent;
+    color: var(--ink);
+  }
+}
+
+@keyframes pnr-frame {
+  from { border-color: var(--rule-soft); }
+}
+
+.ticket-status {
+  display: grid;
+  align-content: start;
+  gap: var(--s2);
+  min-width: 200px;
+  padding: var(--s5);
+  background: var(--paper-2);
+}
+
+.ticket-status-word {
+  font-family: var(--font-chart);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ticket-status.is-confirmed .ticket-status-word {
+  color: var(--blue);
+}
+
+.ticket-route {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s5);
+  padding: var(--s5);
+}
+
+.ticket-top .plate-plan {
+  width: 200px;
+}
+
+.ticket-top {
+  grid-template-columns: minmax(0, 1fr) 200px;
+}
+
+.ticket-facts {
+  border-bottom: none;
+}
+
+.ticket-note {
+  padding: var(--s4);
+  border-top: var(--hairline);
+}
+
+/* A cancelled ticket is terrain. The hatch here is lighter and wider than
+   on a result row, so the large text on it stays legible without patches. */
+.ticket-page.is-cancelled .ticket-head,
+.ticket-page.is-cancelled .ticket-status,
+.ticket-page.is-cancelled .ticket-route {
+  background: var(--hatch-light);
+}
+
+.ticket-page.is-cancelled .pnr {
+  background: var(--paper);
+}
+
+.ticket-page.is-cancelled .plate-leg .route-line {
+  background: var(--ink-3);
+}
+
+.ticket-page.is-cancelled .ticket-status-word {
+  color: var(--ink);
+}
+
+.ticket-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.cancel-confirm {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5);
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+}
+
+@media (max-width: 720px) {
+  .ticket-head {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-pnr {
+    border-right: none;
+    border-bottom: var(--hairline);
+    padding: var(--s4);
+  }
+
+  /* The six cells share the width instead of each claiming a fixed one, so
+     the PNR keeps its full letter size and still fits a 360px phone. */
+  .pnr {
+    width: 100%;
+  }
+
+  .pnr-cell {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .ticket-status {
+    padding: var(--s3) var(--s4);
+  }
+
+  .ticket-route {
+    gap: var(--s3);
+    padding: var(--s4);
+  }
+
+  .ticket-top {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-top .plate-plan {
+    width: auto;
+  }
+
+  .ticket-top .route-inset {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media print {
+  .masthead,
+  .chart-margin,
+  .ticket-actions,
+  .ticket-banner,
+  .cancel-confirm,
+  .skip-link {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .page {
+    padding: 0;
+  }
+
+  .ticket-page {
+    max-width: none;
+  }
+}

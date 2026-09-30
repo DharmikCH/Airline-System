@@ -1,0 +1,199 @@
+/* The page frame: masthead, content column, and the chart margin footer. */
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--s4);
+  top: -60px;
+  z-index: 10;
+  padding: var(--s2) var(--s3);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip-link:focus {
+  top: var(--s2);
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: stretch;
+  border-bottom: var(--hairline);
+  background: var(--paper);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s3) var(--s5) var(--s3) var(--gutter);
+  border-right: var(--hairline);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+.brand-word {
+  font-family: var(--font-chart);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mainnav {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mainnav::-webkit-scrollbar {
+  display: none;
+}
+
+.mainnav a {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--s4);
+  border-right: var(--hairline-soft);
+  color: var(--ink-2);
+  font-family: var(--font-chart);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--fast) var(--ease-out), background-color var(--fast) var(--ease-out);
+}
+
+.mainnav a:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+/* The current page is underlined in magenta, like the active leg on a chart. */
+.mainnav a.active {
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 var(--magenta);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2) var(--gutter) var(--s2) var(--s4);
+  border-left: var(--hairline);
+}
+
+.account-name {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.role-tag {
+  padding: 1px 6px;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  font-family: var(--font-chart);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--s6) var(--gutter) var(--s8);
+}
+
+.page-wide {
+  max-width: none;
+  padding: 0;
+}
+
+.chart-margin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s2) var(--s5);
+  padding: var(--s3) var(--gutter);
+  border-top: var(--hairline);
+  background: var(--paper-2);
+  color: var(--ink-2);
+  font-family: var(--font-chart);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Page title block: a heading with its supporting line, ruled underneath. */
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-bottom: var(--s4);
+  margin-bottom: var(--s5);
+  border-bottom: var(--hairline);
+}
+
+.page-head p {
+  margin-top: var(--s1);
+  color: var(--ink-2);
+}
+
+@media (max-width: 860px) {
+  .masthead {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mainnav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border-top: var(--hairline);
+  }
+
+  .mainnav a {
+    min-height: 44px;
+  }
+
+  .brand {
+    border-right: none;
+    padding-left: var(--gutter);
+  }
+
+  .account {
+    border-left: none;
+    padding-right: var(--gutter);
+  }
+
+  .account-name {
+    display: none;
+  }
+}
+
+/* On a phone the masthead keeps one account action; Create account is still
+   one tap away from the sign-in page. */
+@media (max-width: 480px) {
+  .account .btn:not(.btn-quiet) {
+    display: none;
+  }
+}
