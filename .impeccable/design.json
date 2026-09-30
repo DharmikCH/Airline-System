@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T14:07:01.549Z",
+  "title": "Design System: Airway",
+  "extensions": {
+    "colorMeta": {
+      "chart-paper": {
+        "role": "neutral",
+        "displayName": "Chart Paper",
+        "canonical": "#f4f3ee",
+        "oklch": "oklch(96.4% 0.007 97.4)",
+        "tonalRamp": [
+          "oklch(15% 0.007 97.4)",
+          "oklch(26.4% 0.007 97.4)",
+          "oklch(37.9% 0.007 97.4)",
+          "oklch(49.3% 0.007 97.4)",
+          "oklch(60.7% 0.007 97.4)",
+          "oklch(72.1% 0.007 97.4)",
+          "oklch(83.6% 0.007 97.4)",
+          "oklch(95% 0.007 97.4)"
+        ]
+      },
+      "margin-paper": {
+        "role": "neutral",
+        "displayName": "Margin Paper",
+        "canonical": "#eae8e0",
+        "oklch": "oklch(93% 0.011 95.2)",
+        "tonalRamp": [
+          "oklch(15% 0.011 95.2)",
+          "oklch(26.4% 0.011 95.2)",
+          "oklch(37.9% 0.011 95.2)",
+          "oklch(49.3% 0.011 95.2)",
+          "oklch(60.7% 0.011 95.2)",
+          "oklch(72.1% 0.011 95.2)",
+          "oklch(83.6% 0.011 95.2)",
+          "oklch(95% 0.011 95.2)"
+        ]
+      },
+      "blank-field": {
+        "role": "neutral",
+        "displayName": "Blank Field",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100% 0 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0 89.9)",
+          "oklch(26.4% 0 89.9)",
+          "oklch(37.9% 0 89.9)",
+          "oklch(49.3% 0 89.9)",
+          "oklch(60.7% 0 89.9)",
+          "oklch(72.1% 0 89.9)",
+          "oklch(83.6% 0 89.9)",
+          "oklch(95% 0 89.9)"
+        ]
+      },
+      "chart-ink": {
+        "role": "neutral",
+        "displayName": "Chart Ink",
+        "canonical": "#15171a",
+        "oklch": "oklch(20.4% 0.007 258.4)",
+        "tonalRamp": [
+          "oklch(15% 0.007 258.4)",
+          "oklch(26.4% 0.007 258.4)",
+          "oklch(37.9% 0.007 258.4)",
+          "oklch(49.3% 0.007 258.4)",
+          "oklch(60.7% 0.007 258.4)",
+          "oklch(72.1% 0.007 258.4)",
+          "oklch(83.6% 0.007 258.4)",
+          "oklch(95% 0.007 258.4)"
+        ]
+      },
+      "secondary-ink": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#474a50",
+        "oklch": "oklch(40.9% 0.011 264.4)",
+        "tonalRamp": [
+          "oklch(15% 0.011 264.4)",
+          "oklch(26.4% 0.011 264.4)",
+          "oklch(37.9% 0.011 264.4)",
+          "oklch(49.3% 0.011 264.4)",
+          "oklch(60.7% 0.011 264.4)",
+          "oklch(72.1% 0.011 264.4)",
+          "oklch(83.6% 0.011 264.4)",
+          "oklch(95% 0.011 264.4)"
+        ]
+      },
+      "caption-ink": {
+        "role": "neutral",
+        "displayName": "Caption Ink",
+        "canonical": "#62656b",
+        "oklch": "oklch(50.6% 0.01 264.5)",
+        "tonalRamp": [
+          "oklch(15% 0.01 264.5)",
+          "oklch(26.4% 0.01 264.5)",
+          "oklch(37.9% 0.01 264.5)",
+          "oklch(49.3% 0.01 264.5)",
+          "oklch(60.7% 0.01 264.5)",
+          "oklch(72.1% 0.01 264.5)",
+          "oklch(83.6% 0.01 264.5)",
+          "oklch(95% 0.01 264.5)"
+        ]
+      },
+      "graticule": {
+        "role": "neutral",
+        "displayName": "Graticule",
+        "canonical": "#c9c6bb",
+        "oklch": "oklch(82.6% 0.015 94.2)",
+        "tonalRamp": [
+          "oklch(15% 0.015 94.2)",
+          "oklch(26.4% 0.015 94.2)",
+          "oklch(37.9% 0.015 94.2)",
+          "oklch(49.3% 0.015 94.2)",
+          "oklch(60.7% 0.015 94.2)",
+          "oklch(72.1% 0.015 94.2)",
+          "oklch(83.6% 0.015 94.2)",
+          "oklch(95% 0.015 94.2)"
+        ]
+      },
+      "airway-magenta": {
+        "role": "primary",
+        "displayName": "Airway Magenta",
+        "canonical": "#a51f63",
+        "oklch": "oklch(48.6% 0.177 355.6)",
+        "tonalRamp": [
+          "oklch(15% 0.102 355.6)",
+          "oklch(26.4% 0.153 355.6)",
+          "oklch(37.9% 0.177 355.6)",
+          "oklch(49.3% 0.177 355.6)",
+          "oklch(60.7% 0.177 355.6)",
+          "oklch(72.1% 0.158 355.6)",
+          "oklch(83.6% 0.109 355.6)",
+          "oklch(95% 0.048 355.6)"
+        ]
+      },
+      "airway-magenta-deep": {
+        "role": "primary",
+        "displayName": "Deep Airway Magenta",
+        "canonical": "#871650",
+        "oklch": "oklch(41.8% 0.154 355.5)",
+        "tonalRamp": [
+          "oklch(15% 0.102 355.5)",
+          "oklch(26.4% 0.153 355.5)",
+          "oklch(37.9% 0.154 355.5)",
+          "oklch(49.3% 0.154 355.5)",
+          "oklch(60.7% 0.154 355.5)",
+          "oklch(72.1% 0.154 355.5)",
+          "oklch(83.6% 0.109 355.5)",
+          "oklch(95% 0.048 355.5)"
+        ]
+      },
+      "magenta-wash": {
+        "role": "primary",
+        "displayName": "Magenta Wash",
+        "canonical": "#f3e3eb",
+        "oklch": "oklch(93.1% 0.02 345.7)",
+        "tonalRamp": [
+          "oklch(15% 0.02 345.7)",
+          "oklch(26.4% 0.02 345.7)",
+          "oklch(37.9% 0.02 345.7)",
+          "oklch(49.3% 0.02 345.7)",
+          "oklch(60.7% 0.02 345.7)",
+          "oklch(72.1% 0.02 345.7)",
+          "oklch(83.6% 0.02 345.7)",
+          "oklch(95% 0.02 345.7)"
+        ]
+      },
+      "on-magenta": {
+        "role": "primary",
+        "displayName": "On Magenta",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100% 0 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0 89.9)",
+          "oklch(26.4% 0 89.9)",
+          "oklch(37.9% 0 89.9)",
+          "oklch(49.3% 0 89.9)",
+          "oklch(60.7% 0 89.9)",
+          "oklch(72.1% 0 89.9)",
+          "oklch(83.6% 0 89.9)",
+          "oklch(95% 0 89.9)"
+        ]
+      },
+      "information-blue": {
+        "role": "secondary",
+        "displayName": "Information Blue",
+        "canonical": "#1f5e99",
+        "oklch": "oklch(47.3% 0.114 250.5)",
+        "tonalRamp": [
+          "oklch(15% 0.102 250.5)",
+          "oklch(26.4% 0.114 250.5)",
+          "oklch(37.9% 0.114 250.5)",
+          "oklch(49.3% 0.114 250.5)",
+          "oklch(60.7% 0.114 250.5)",
+          "oklch(72.1% 0.114 250.5)",
+          "oklch(83.6% 0.109 250.5)",
+          "oklch(95% 0.048 250.5)"
+        ]
+      },
+      "blue-wash": {
+        "role": "secondary",
+        "displayName": "Blue Wash",
+        "canonical": "#e2ebf3",
+        "oklch": "oklch(93.6% 0.015 244.7)",
+        "tonalRamp": [
+          "oklch(15% 0.015 244.7)",
+          "oklch(26.4% 0.015 244.7)",
+          "oklch(37.9% 0.015 244.7)",
+          "oklch(49.3% 0.015 244.7)",
+          "oklch(60.7% 0.015 244.7)",
+          "oklch(72.1% 0.015 244.7)",
+          "oklch(83.6% 0.015 244.7)",
+          "oklch(95% 0.015 244.7)"
+        ]
+      },
+      "terrain": {
+        "role": "tertiary",
+        "displayName": "Terrain",
+        "canonical": "#ddd3b7",
+        "oklch": "oklch(86.8% 0.039 90.7)",
+        "tonalRamp": [
+          "oklch(15% 0.039 90.7)",
+          "oklch(26.4% 0.039 90.7)",
+          "oklch(37.9% 0.039 90.7)",
+          "oklch(49.3% 0.039 90.7)",
+          "oklch(60.7% 0.039 90.7)",
+          "oklch(72.1% 0.039 90.7)",
+          "oklch(83.6% 0.039 90.7)",
+          "oklch(95% 0.039 90.7)"
+        ]
+      },
+      "terrain-line": {
+        "role": "tertiary",
+        "displayName": "Terrain Line",
+        "canonical": "#b3a57f",
+        "oklch": "oklch(72.4% 0.055 90.2)",
+        "tonalRamp": [
+          "oklch(15% 0.055 90.2)",
+          "oklch(26.4% 0.055 90.2)",
+          "oklch(37.9% 0.055 90.2)",
+          "oklch(49.3% 0.055 90.2)",
+          "oklch(60.7% 0.055 90.2)",
+          "oklch(72.1% 0.055 90.2)",
+          "oklch(83.6% 0.055 90.2)",
+          "oklch(95% 0.048 90.2)"
+        ]
+      },
+      "field-alert": {
+        "role": "tertiary",
+        "displayName": "Field Alert",
+        "canonical": "#9a2b16",
+        "oklch": "oklch(46% 0.15 32.8)",
+        "tonalRamp": [
+          "oklch(15% 0.102 32.8)",
+          "oklch(26.4% 0.15 32.8)",
+          "oklch(37.9% 0.15 32.8)",
+          "oklch(49.3% 0.15 32.8)",
+          "oklch(60.7% 0.15 32.8)",
+          "oklch(72.1% 0.15 32.8)",
+          "oklch(83.6% 0.109 32.8)",
+          "oklch(95% 0.048 32.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The PNR only, one character per ruled cell; 4.5rem under 720px."
+      },
+      "route": {
+        "displayName": "Route",
+        "purpose": "Airport codes on the route axis and the fare total; 2rem under 720px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page h1, flight times on rows, ticket status word."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h2, briefing-strip values, row fares, wordmark."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max 68ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase tracked name of a value: field labels, fact terms, table heads."
+      }
+    },
+    "shadows": [
+      {
+        "name": "active-leg",
+        "value": "inset 0 -3px 0 var(--magenta)",
+        "purpose": "Structural underline for the current masthead nav item. Not elevation."
+      },
+      {
+        "name": "next-cell",
+        "value": "inset 0 -4px 0 var(--magenta)",
+        "purpose": "Marks the next PNR entry cell while focused."
+      },
+      {
+        "name": "field-error-ring",
+        "value": "inset 0 0 0 1px var(--alert)",
+        "purpose": "Doubles the border of an invalid field."
+      },
+      {
+        "name": "terrain-patch",
+        "value": "0 0 0 3px var(--terrain)",
+        "purpose": "Lifts text off hatching onto solid terrain (4px in notices)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "The one easing curve for every transition and animation."
+      },
+      {
+        "name": "fast",
+        "value": "160ms",
+        "purpose": "Hover and colour state transitions."
+      },
+      {
+        "name": "airways-light",
+        "value": "320ms ease-out",
+        "purpose": "Airways from the chosen origin fade in."
+      },
+      {
+        "name": "airway-draw",
+        "value": "700ms ease-out, stroke-dashoffset 1 to 0",
+        "purpose": "Signature: the chosen airway draws itself origin to destination."
+      },
+      {
+        "name": "airway-box-in",
+        "value": "240ms ease-out, 520ms delay",
+        "purpose": "Route label box appears as the airway lands."
+      },
+      {
+        "name": "pnr-print",
+        "value": "520ms ease-out, 180ms + i*110ms stagger",
+        "purpose": "Signature: PNR cells wipe up on magenta and settle to ink after booking."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition durations 0.01ms",
+        "purpose": "All motion is instant under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "480px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "720px"
+      },
+      {
+        "name": "nav",
+        "value": "860px"
+      },
+      {
+        "name": "desk",
+        "value": "960px"
+      },
+      {
+        "name": "row",
+        "value": "1100px"
+      },
+      {
+        "name": "inset",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single main action on a screen: Select, Book, Search.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Book this flight</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 1px solid var(--ink, #15171a); border-radius: 0; background: var(--paper, #f4f3ee); color: var(--ink, #15171a); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--magenta, #a51f63); outline-offset: 2px; } .ds-btn-primary { background: var(--magenta, #a51f63); border-color: var(--magenta, #a51f63); color: var(--on-magenta, #fff); } .ds-btn-primary:hover { background: var(--magenta-hover, #871650); border-color: var(--magenta-hover, #871650); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Every other action: ruled paper button, hover to margin paper.",
+      "html": "<button class=\"ds-btn-secondary\">Details</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1px solid var(--ink, #15171a); border-radius: 0; background: var(--paper, #f4f3ee); color: var(--ink, #15171a); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { background: var(--paper-2, #eae8e0); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--magenta, #a51f63); outline-offset: 2px; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Borderless magenta text action: Sign in, Sign out, Back.",
+      "html": "<button class=\"ds-btn-quiet\">Sign out</button>",
+      "css": ".ds-btn-quiet { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1px solid transparent; border-radius: 0; background: transparent; color: var(--magenta, #a51f63); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-quiet:hover { background: var(--magenta-wash, #f3e3eb); color: var(--magenta-hover, #871650); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--magenta, #a51f63); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled blank field with a chart-lettering label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Passenger name</span><input class=\"ds-input\" placeholder=\"As on your ID\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 4px; } .ds-label { font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2, #474a50); } .ds-input { min-height: 44px; padding: 0 12px; border: 1px solid var(--ink, #15171a); border-radius: 0; background: var(--paper-3, #fff); color: var(--ink, #15171a); font: inherit; font-size: 1.0625rem; caret-color: var(--magenta, #a51f63); } .ds-input::placeholder { color: var(--ink-3, #62656b); } .ds-input:hover { background-color: #fbfbf8; } .ds-input:focus-visible { outline: 2px solid var(--magenta, #a51f63); outline-offset: -1px; } .ds-input[aria-invalid='true'] { border-color: var(--alert, #9a2b16); box-shadow: inset 0 0 0 1px var(--alert, #9a2b16); }"
+    },
+    {
+      "name": "Masthead Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Ruled masthead row; current page carries a magenta underline like the active leg.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"25\" r=\"3.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><circle cx=\"25\" cy=\"7\" r=\"3.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M9.5 22.5 22.5 9.5\" stroke=\"#a51f63\" stroke-width=\"3\"/></svg><span>Airway</span></a><a class=\"ds-nav-link is-active\" href=\"#\">Search</a><a class=\"ds-nav-link\" href=\"#\">My trips</a><a class=\"ds-nav-link\" href=\"#\">Find a booking</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: stretch; border-bottom: 1px solid var(--ink, #15171a); background: var(--paper, #f4f3ee); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); } .ds-brand { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-right: 1px solid var(--ink, #15171a); color: var(--ink, #15171a); text-decoration: none; font-size: 1.3125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; } .ds-nav-link { display: flex; align-items: center; padding: 0 16px; border-right: 1px solid var(--rule-soft, #c9c6bb); color: var(--ink-2, #474a50); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-nav-link:hover { color: var(--ink, #15171a); background: var(--paper-2, #eae8e0); } .ds-nav-link:focus-visible { outline: 2px solid var(--magenta, #a51f63); outline-offset: 2px; } .ds-nav-link.is-active { color: var(--ink, #15171a); box-shadow: inset 0 -3px 0 var(--magenta, #a51f63); }"
+    },
+    {
+      "name": "Status Tags",
+      "kind": "chip",
+      "refersTo": "status-tag-info",
+      "description": "Bordered state words: blue for information, hatched terrain for refusals.",
+      "html": "<span class=\"ds-tag ds-tag-info\">Confirmed</span> <span class=\"ds-tag ds-tag-refused\">Sold out</span> <span class=\"ds-tag ds-tag-past\">Departed</span>",
+      "css": ".ds-tag { display: inline-block; padding: 1px 7px; border: 1px solid currentColor; font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; } .ds-tag-info { color: var(--blue, #1f5e99); } .ds-tag-refused { color: var(--ink, #15171a); background: repeating-linear-gradient(-45deg, #b3a57f 0 1px, transparent 1px 7px), #ddd3b7; } .ds-tag-past { color: var(--ink-2, #474a50); }"
+    },
+    {
+      "name": "Briefing Strip",
+      "kind": "custom",
+      "refersTo": "briefing-search",
+      "description": "Signature search form: one ruled row of FROM / swap / TO / DATE cells with a magenta Search cell.",
+      "html": "<form class=\"ds-briefing\"><div class=\"ds-bcell\"><span class=\"ds-blabel\">From</span><span class=\"ds-bval\">BLR</span></div><button type=\"button\" class=\"ds-bswap\" aria-label=\"Swap\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 5h11M10 2l3 3-3 3M14 11H3M6 8l-3 3 3 3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button><div class=\"ds-bcell\"><span class=\"ds-blabel\">To</span><span class=\"ds-bval\">DEL</span></div><div class=\"ds-bcell\"><span class=\"ds-blabel\">Date</span><span class=\"ds-bval\">02 Oct</span></div><button class=\"ds-bgo\">Search</button></form>",
+      "css": ".ds-briefing { display: grid; grid-template-columns: minmax(0,1fr) 48px minmax(0,1fr) minmax(0,0.8fr) auto; border: 1px solid var(--ink, #15171a); background: var(--paper-3, #fff); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); } .ds-bcell { display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border-right: 1px solid var(--ink, #15171a); } .ds-bcell:focus-within { background: var(--magenta-wash, #f3e3eb); } .ds-blabel { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2, #474a50); } .ds-bval { font-size: 1.3125rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink, #15171a); } .ds-bswap { display: grid; place-items: center; border: none; border-right: 1px solid var(--ink, #15171a); background: var(--paper, #f4f3ee); color: var(--ink, #15171a); cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-bswap:hover { background: var(--magenta-wash, #f3e3eb); color: var(--magenta, #a51f63); } .ds-bgo { padding: 0 24px; border: none; background: var(--magenta, #a51f63); color: var(--on-magenta, #fff); font-family: inherit; font-size: 1.0625rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-bgo:hover { background: var(--magenta-hover, #871650); } .ds-bgo:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }"
+    },
+    {
+      "name": "Route Axis",
+      "kind": "custom",
+      "refersTo": "route",
+      "description": "Every route drawn one way: origin left, destination right, magenta airway capped by hollow fixes.",
+      "html": "<div class=\"ds-axis\"><span class=\"ds-code\">BLR</span><span class=\"ds-line\"></span><span class=\"ds-code\">DEL</span></div>",
+      "css": ".ds-axis { display: flex; align-items: center; gap: 12px; max-width: 420px; } .ds-code { font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 2.5rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1; color: var(--ink, #15171a); } .ds-line { position: relative; flex: 1; height: 3px; background: var(--magenta, #a51f63); } .ds-line::before, .ds-line::after { content: ''; position: absolute; top: 50%; width: 9px; height: 9px; border: 2px solid var(--ink, #15171a); border-radius: 50%; background: var(--paper-2, #eae8e0); transform: translateY(-50%); } .ds-line::before { left: -2px; } .ds-line::after { right: -2px; }"
+    },
+    {
+      "name": "PNR Mark",
+      "kind": "custom",
+      "refersTo": "pnr-cell",
+      "description": "Signature: the PNR as the sheet's index number, six ruled cells at display size.",
+      "html": "<div class=\"ds-pnr\" role=\"img\" aria-label=\"PNR K 7 X M 4 Q\"><span>K</span><span>7</span><span>X</span><span>M</span><span>4</span><span>Q</span></div>",
+      "css": ".ds-pnr { display: flex; width: fit-content; border: 2px solid var(--ink, #15171a); background: var(--paper, #f4f3ee); } .ds-pnr span { display: grid; place-items: center; width: 0.78em; height: 1.12em; border-right: 1px solid var(--ink, #15171a); font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 6rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink, #15171a); } .ds-pnr span:last-child { border-right: none; } .ds-pnr:hover span { animation: ds-pnr-print 520ms cubic-bezier(0.23, 1, 0.32, 1) both; } .ds-pnr:hover span:nth-child(2) { animation-delay: 110ms; } .ds-pnr:hover span:nth-child(3) { animation-delay: 220ms; } .ds-pnr:hover span:nth-child(4) { animation-delay: 330ms; } .ds-pnr:hover span:nth-child(5) { animation-delay: 440ms; } .ds-pnr:hover span:nth-child(6) { animation-delay: 550ms; } @keyframes ds-pnr-print { 0% { clip-path: inset(100% 0 0 0); background: #a51f63; color: #fff; } 55% { clip-path: inset(0 0 0 0); background: #a51f63; color: #fff; } 100% { clip-path: inset(0 0 0 0); background: transparent; color: #15171a; } } @media (prefers-reduced-motion: reduce) { .ds-pnr:hover span { animation: none; } }"
+    },
+    {
+      "name": "Refusal Notice",
+      "kind": "card",
+      "refersTo": "notice-refusal",
+      "description": "A backend refusal drawn as terrain: hatched box, text on solid terrain patches.",
+      "html": "<div class=\"ds-refusal\"><strong>Sold out</strong><p>Every seat on this flight has been booked.</p></div>",
+      "css": ".ds-refusal { display: grid; gap: 4px; padding: 12px 16px; border: 1px solid var(--ink, #15171a); background: repeating-linear-gradient(-45deg, #b3a57f 0 1px, transparent 1px 7px), #ddd3b7; color: var(--ink, #15171a); } .ds-refusal strong, .ds-refusal p { margin: 0; width: fit-content; background: #ddd3b7; box-shadow: 0 0 0 4px #ddd3b7; } .ds-refusal strong { font-family: var(--font-chart, Bahnschrift, 'DIN Alternate', 'Arial Narrow', sans-serif); font-size: 1.0625rem; font-weight: 600; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Approach Plate",
+    "overview": "Every screen is published the way an aeronautical chart publishes an approach: a ruled briefing strip of facts across the top, a plan view of the route, and one index number that identifies the whole sheet. The ground is pale chart paper, everything is drawn in black ink with 1px ruled boxes and square corners, and labels are small, uppercase and tracked like frequency boxes. Density is that of a working document: many facts, each in its own cell, none floating.\n\nColour carries meaning the way it does on a chart, never decoration. Magenta is the airway: the route you have chosen and the one thing you can act on. Blue is information. Tan terrain hatching is ground you cannot fly through: sold-out, departed, withdrawn and cancelled. Depth is not simulated; the sheet is flat and structure comes from rules. The system refuses the online-travel-agency arrangement of a gradient hero, a rounded search widget and floating fare cards.\n\nMotion is reserved for two moments: the chosen airway drawing itself between two airports, and the PNR printing into its cells after booking. Both collapse to instant under reduced motion.",
+    "keyCharacteristics": [
+      "Chart-paper ground, black ink, 1px ruled boxes, square corners.",
+      "Magenta is the only accent and the only action colour.",
+      "Blue means information; tan hatching means unavailable.",
+      "Tabular numerals and uppercase tracked chart lettering for every named value.",
+      "Every route is drawn on one axis: origin left, destination right, joined by the airway.",
+      "The PNR is the sheet's index number: huge, ruled into six cells, never shrinking.",
+      "Flat: no elevation shadows, no rounded cards, no gradients as surface."
+    ],
+    "rules": [
+      {
+        "name": "The One Airway Rule",
+        "body": "Magenta means \"this is your route\" or \"you can act on this\". It never decorates, never marks status, and fills at most one main action per screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Terrain Rule",
+        "body": "Anything the backend refuses (sold out, departed, withdrawn, cancelled) is drawn as hatched terrain, with its text lifted onto solid terrain patches so it stays readable. Refusals are never red; red is only for a field the user typed wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Blue Is Information Rule",
+        "body": "Blue states facts and confirmations. It is never a link, button or route.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number that can sit in a column (times, seats, fares, flight numbers, PNRs) is set in the chart font with tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Label Names A Value Rule",
+        "body": "Uppercase tracked lettering labels a field, fact or panel it sits on. It is never a free-floating tag line above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Sheet Rule",
+        "body": "If something needs separating, rule it. Never float it on a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do rule every box with a 1px ink hairline and keep every corner square (0px).",
+      "Do reserve magenta for the chosen route and the single main action on a screen.",
+      "Do mark every backend refusal (sold out, departed, withdrawn, cancelled) with terrain hatching and keep its text on solid terrain patches.",
+      "Do draw every route on one axis, origin left and destination right, joined by the airway line with a hollow fix at each end.",
+      "Do set times, fares, seats and PNRs in the chart font with tabular numerals.",
+      "Do keep the PNR at display size in six ruled cells on every ticket view.",
+      "Do disable the airway draw and PNR print under prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use drop shadows, elevation or floating cards; separate with rules and tonal panels.",
+      "Don't round the corners of boxes, buttons, fields or tags; circles belong only to chart symbols.",
+      "Don't use gradients as a surface or backdrop; the only repeating gradient is the terrain hatch.",
+      "Don't use magenta for status or decoration, or blue for anything clickable.",
+      "Don't show a backend refusal in red; red is for a field the user typed wrong.",
+      "Don't shrink, truncate or restyle the PNR to fit a layout."
+    ]
+  }
+}

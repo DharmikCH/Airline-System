@@ -1,0 +1,555 @@
+/* The search page: briefing strip over the chart, with the route index in the
+   right margin. Also the briefing strip itself, which the results page reuses. */
+
+/* ---------- Briefing strip ---------- */
+
+.briefing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr) minmax(0, 0.8fr) auto;
+  border: var(--hairline);
+  background: var(--paper-3);
+}
+
+.briefing-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: var(--s3) var(--s4);
+  border-right: var(--hairline);
+}
+
+.briefing-cell:focus-within {
+  background: var(--magenta-wash);
+}
+
+.briefing-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-chart);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  caret-color: var(--magenta);
+}
+
+.briefing-select:focus-visible {
+  outline: none;
+}
+
+select.briefing-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2315171a' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 20px;
+}
+
+.briefing-select[aria-invalid='true'] {
+  color: var(--alert);
+}
+
+.briefing-swap {
+  display: grid;
+  place-items: center;
+  border: none;
+  border-right: var(--hairline);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--fast) var(--ease-out), color var(--fast) var(--ease-out);
+}
+
+.briefing-swap:hover {
+  background: var(--magenta-wash);
+  color: var(--magenta);
+}
+
+.briefing-go {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  padding: 0 var(--s5);
+  border: none;
+  background: var(--magenta);
+  color: var(--on-magenta);
+  font-family: var(--font-chart);
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--fast) var(--ease-out);
+}
+
+.briefing-go:hover {
+  background: var(--magenta-hover);
+}
+
+.briefing-go:focus-visible {
+  outline-offset: -4px;
+  outline-color: var(--on-magenta);
+}
+
+.briefing.is-compact .briefing-cell {
+  padding: var(--s2) var(--s3);
+}
+
+.briefing.is-compact .briefing-select {
+  font-size: var(--text-md);
+}
+
+/* ---------- Desk: chart + index ---------- */
+
+.desk {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  border: var(--hairline);
+  border-top: none;
+}
+
+.desk-chart {
+  min-width: 0;
+  padding: var(--s4);
+  border-right: var(--hairline);
+  background: var(--paper);
+}
+
+.desk-index {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+}
+
+.index-box {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5) var(--s5);
+  border-bottom: var(--hairline);
+}
+
+.index-box:last-child {
+  border-bottom: none;
+}
+
+.index-prompt {
+  font-size: var(--text-md);
+  line-height: 1.45;
+}
+
+/* The route axis: origin left, destination right, joined by the airway.
+   Every screen that shows a route draws it this way. */
+.route-axis {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.route-code {
+  font-family: var(--font-chart);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.route-line {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  background: var(--magenta);
+}
+
+.route-line::before,
+.route-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper-2);
+  transform: translateY(-50%);
+}
+
+.route-line::before { left: -2px; }
+.route-line::after { right: -2px; }
+
+.route-names {
+  color: var(--ink-2);
+}
+
+.route-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  border-top: var(--hairline-soft);
+}
+
+.route-facts > div {
+  padding: var(--s2) 0;
+  border-bottom: var(--hairline-soft);
+}
+
+.route-facts > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.route-facts dd {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.index-go {
+  width: 100%;
+}
+
+.index-resume p {
+  font-size: var(--text-base);
+}
+
+.index-resume .btn {
+  justify-self: start;
+  margin-left: calc(var(--s4) * -1);
+}
+
+.index-legend ul {
+  display: grid;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.index-legend li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.legend-airport circle,
+.legend-airport path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.legend-airport .dot {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.legend-network {
+  stroke: var(--ink-3);
+  stroke-width: 1.25;
+  stroke-dasharray: 2 4;
+}
+
+.legend-airway {
+  stroke: var(--magenta);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.legend-chosen {
+  stroke: var(--magenta);
+  stroke-width: 4;
+}
+
+.legend-hatch {
+  width: 28px;
+  height: 16px;
+  border: 1px solid var(--ink);
+  background: var(--hatch);
+}
+
+/* ---------- The chart ---------- */
+
+.route-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-chart);
+  user-select: none;
+}
+
+.graticule line {
+  stroke: var(--rule-soft);
+  stroke-width: 1;
+}
+
+.graticule text {
+  fill: var(--ink-3);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.neatline {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.border-bars rect {
+  fill: var(--ink);
+}
+
+.chart-title,
+.chart-subtitle {
+  text-anchor: end;
+}
+
+.chart-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  fill: var(--ink);
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  fill: var(--ink-2);
+}
+
+/* The faint network of every possible route. */
+.network line {
+  stroke: var(--ink-3);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 5;
+  opacity: 0.55;
+}
+
+/* Compass rose around the departure airport. */
+.rose {
+  animation: airways-light 320ms var(--ease-out) both;
+}
+
+.rose circle,
+.rose line {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1;
+}
+
+.rose text {
+  fill: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+  letter-spacing: 0.06em;
+}
+
+.rose-track line {
+  stroke: var(--magenta);
+  stroke-width: 3;
+}
+
+.rose-track text {
+  fill: var(--magenta);
+  font-size: 13px;
+}
+
+.airways line {
+  stroke: var(--magenta);
+  stroke-width: 1.25;
+  stroke-dasharray: 5 4;
+  opacity: 0.85;
+  animation: airways-light 320ms var(--ease-out) both;
+}
+
+/* Once a destination is chosen the other airways drop back to hairlines. */
+.airways.is-settled line {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  opacity: 0.5;
+  animation: none;
+}
+
+@keyframes airways-light {
+  from { opacity: 0; stroke-width: 0.5; }
+}
+
+/* The signature moment: the chosen airway draws itself from origin to
+   destination. pathLength="1" on the line makes the dash maths simple. */
+.airway-chosen line {
+  stroke: var(--magenta);
+  stroke-width: 4;
+  stroke-linecap: square;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: airway-draw 700ms var(--ease-out) both;
+}
+
+@keyframes airway-draw {
+  from { stroke-dashoffset: 1; }
+}
+
+.airway-box {
+  animation: airway-box-in 240ms var(--ease-out) 520ms both;
+}
+
+@keyframes airway-box-in {
+  from { opacity: 0; }
+}
+
+.airway-box rect {
+  fill: var(--paper);
+  stroke: var(--magenta);
+  stroke-width: 1.5;
+}
+
+.airway-box text {
+  text-anchor: middle;
+  fill: var(--ink);
+}
+
+.airway-box-route {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.airway-box-data {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  fill: var(--ink-2) !important;
+}
+
+.airport {
+  cursor: pointer;
+  outline: none;
+}
+
+.airport-hit {
+  fill: transparent;
+}
+
+.airport-ring {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.75;
+  transition: fill var(--fast) var(--ease-out), stroke var(--fast) var(--ease-out);
+}
+
+.airport-ticks {
+  stroke: var(--ink);
+  stroke-width: 1.75;
+}
+
+.airport-dot {
+  fill: var(--ink);
+}
+
+.airport-code {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  fill: var(--ink);
+}
+
+.airport-name {
+  font-size: 14px;
+  fill: var(--ink-2);
+}
+
+.airport-role {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  fill: var(--magenta);
+}
+
+.airport:hover .airport-ring,
+.airport:focus-visible .airport-ring {
+  fill: var(--magenta-wash);
+  stroke: var(--magenta);
+}
+
+.airport:focus-visible .airport-hit {
+  stroke: var(--magenta);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.airport.is-from .airport-ring,
+.airport.is-to .airport-ring {
+  fill: var(--magenta);
+  stroke: var(--magenta);
+}
+
+.airport.is-from .airport-dot,
+.airport.is-to .airport-dot {
+  fill: var(--paper);
+}
+
+.airport.is-from .airport-ticks,
+.airport.is-to .airport-ticks {
+  stroke: var(--magenta);
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 960px) {
+  .desk {
+    grid-template-columns: 1fr;
+  }
+
+  .desk-chart {
+    border-right: none;
+    border-bottom: var(--hairline);
+  }
+
+}
+
+@media (max-width: 720px) {
+  .briefing {
+    grid-template-columns: minmax(0, 1fr) 48px;
+  }
+
+  .briefing-cell {
+    border-bottom: var(--hairline);
+  }
+
+  .briefing-cell:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .briefing-swap {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    border-right: none;
+    border-bottom: var(--hairline);
+  }
+
+  .briefing-cell:nth-of-type(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .briefing-date {
+    grid-column: 1 / -1;
+    border-right: none;
+  }
+
+  .briefing-go {
+    grid-column: 1 / -1;
+    min-height: 52px;
+  }
+
+  .desk-chart {
+    padding: var(--s2);
+  }
+}

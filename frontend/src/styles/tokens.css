@@ -1,86 +1,88 @@
-/* Design tokens. Every colour, radius and curve in the app comes from here,
-   so light and dark mode are a single swap of these values. */
+/* Airway design tokens.
+   The whole app is drawn like an aeronautical chart: pale chart paper, black
+   ink, hairline ruled boxes, and one magenta that means "you can act on this".
+   Every colour, size and curve comes from here. */
 
 :root {
   color-scheme: light;
 
-  --bg: #f6f6f3;
-  --surface: #ffffff;
-  --surface-2: #f0efeb;
-  --border: #e3e1dc;
-  --border-strong: #cdc9c2;
+  /* Paper and ink */
+  --paper: #f4f3ee;
+  --paper-2: #eae8e0;      /* panels, table heads, the chart margin */
+  --paper-3: #ffffff;      /* form fields, so typing areas read as blank */
+  --ink: #15171a;
+  --ink-2: #474a50;        /* secondary text, 8.1:1 on --paper */
+  --ink-3: #62656b;        /* hints and captions, 5.4:1 on --paper */
+  --rule: #15171a;
+  --rule-soft: #c9c6bb;    /* graticule, row dividers */
 
-  --text: #1a1917;
-  --text-2: #5c5852;
-  /* The lightest grey that still clears WCAG AA (4.5:1) on --bg, --surface
-     and --surface-2. It carries small text: seat counts, hints, the footer. */
-  --muted: #6f6a62;
+  /* Magenta: the only accent, used only for things you can act on and for
+     the route you have chosen. 6.9:1 on --paper. */
+  --magenta: #a51f63;
+  --magenta-hover: #871650;
+  --magenta-wash: #f3e3eb;
+  --on-magenta: #ffffff;
 
-  --brand: #2a45c2;
-  --brand-hover: #2139a8;
-  --brand-soft: #edf0fc;
-  --on-brand: #ffffff;
+  /* Blue: information, never action. */
+  --blue: #1f5e99;
+  --blue-wash: #e2ebf3;
 
-  --ok: #2c7a4d;
-  --ok-soft: #e8f4ec;
-  --warn: #9d5f08;
-  --warn-soft: #fcf2e1;
-  --err: #b33434;
-  --err-soft: #fbebeb;
+  /* Terrain: the hatching that marks anything you cannot book. */
+  --terrain: #ddd3b7;
+  --terrain-line: #b3a57f;
+  --hatch: repeating-linear-gradient(
+    -45deg,
+    var(--terrain-line) 0 1px,
+    transparent 1px 7px
+  ), var(--terrain);
 
-  /* The hero is always dark, in both themes, so its colours are fixed. */
-  --hero-from: #16266e;
-  --hero-to: #2f4fd4;
+  --hatch-light: repeating-linear-gradient(
+    -45deg,
+    rgb(179 165 127 / 0.55) 0 1px,
+    transparent 1px 11px
+  ), #e9e2cf;
 
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 18px;
+  /* Field errors only. Refusals from the backend use hatching instead. */
+  --alert: #9a2b16;
 
-  --shadow-sm: 0 1px 2px rgb(20 18 15 / 0.05);
-  --shadow: 0 1px 2px rgb(20 18 15 / 0.04), 0 8px 24px rgb(20 18 15 / 0.06);
-  --shadow-lg: 0 24px 60px rgb(20 18 15 / 0.2);
+  /* Type. Bahnschrift is Windows' DIN, the lettering of charts and signage;
+     the fallbacks keep the same narrow, engineered character. */
+  --font-chart: 'Bahnschrift', 'DIN Alternate', 'D-DIN', 'Roboto Condensed', 'Arial Narrow', sans-serif;
+  --font-text: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
 
-  /* Built-in CSS easings are too weak to feel intentional. */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-pnr: 6rem;
+
+  /* Spacing on a 4px step */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  --hairline: 1px solid var(--rule);
+  --hairline-soft: 1px solid var(--rule-soft);
+
+  --page-max: 1240px;
+  --gutter: 32px;
+
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-
-  --font: ui-sans-serif, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fast: 160ms;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (max-width: 720px) {
   :root {
-    color-scheme: dark;
-
-    --bg: #10100f;
-    --surface: #191917;
-    --surface-2: #22221f;
-    --border: #2d2c29;
-    --border-strong: #3e3c38;
-
-    --text: #efede8;
-    --text-2: #b4afa7;
-    /* Same rule as the light theme: 4.5:1 on every dark background. */
-    --muted: #8f8a81;
-
-    --brand: #7f96ff;
-    --brand-hover: #98abff;
-    --brand-soft: #1c2240;
-    --on-brand: #0e1124;
-
-    --ok: #67b98b;
-    --ok-soft: #15251b;
-    --warn: #e0a24c;
-    --warn-soft: #2a2114;
-    --err: #e97b75;
-    --err-soft: #2b1817;
-
-    --hero-from: #0d1640;
-    --hero-to: #22389c;
-
-    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
-    --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.55);
+    --gutter: 16px;
+    --text-pnr: 4.5rem;
+    --text-2xl: 2rem;
   }
 }

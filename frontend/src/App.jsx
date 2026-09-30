@@ -1,48 +1,42 @@
 import { Route, Routes } from 'react-router-dom';
-import RequireAuth from './auth/RequireAuth.jsx';
-import Layout from './components/Layout.jsx';
-import Book from './pages/Book.jsx';
-import FlightDetails from './pages/FlightDetails.jsx';
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
-import ManageBooking from './pages/ManageBooking.jsx';
-import NotFound from './pages/NotFound.jsx';
-import Register from './pages/Register.jsx';
-import SearchResults from './pages/SearchResults.jsx';
-import Ticket from './pages/Ticket.jsx';
-import Trips from './pages/Trips.jsx';
-import Bookings from './pages/admin/Bookings.jsx';
-import Dashboard from './pages/admin/Dashboard.jsx';
-import FlightForm from './pages/admin/FlightForm.jsx';
-import Flights from './pages/admin/Flights.jsx';
+import Shell from './components/Shell.jsx';
+import { RequireAuth } from './lib/auth.jsx';
+import SearchPage from './pages/SearchPage.jsx';
+import ResultsPage from './pages/ResultsPage.jsx';
+import FlightPage from './pages/FlightPage.jsx';
+import TicketPage from './pages/TicketPage.jsx';
+import TripsPage from './pages/TripsPage.jsx';
+import FindBookingPage from './pages/FindBookingPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+import AdminFlightsPage from './pages/admin/AdminFlightsPage.jsx';
+import AdminFlightFormPage from './pages/admin/AdminFlightFormPage.jsx';
+import AdminBookingsPage from './pages/admin/AdminBookingsPage.jsx';
 
-// Every page in the site. RequireAuth only affects what the browser shows;
-// the backend enforces login and the admin role on every request regardless.
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        {/* Public */}
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchResults />} />
-        <Route path="/flights/:id" element={<FlightDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+      <Route element={<Shell />}>
+        {/* Anyone */}
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/flights" element={<ResultsPage />} />
+        <Route path="/flights/:id" element={<FlightPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
-        {/* Passenger */}
-        <Route path="/book/:flightId" element={<RequireAuth><Book /></RequireAuth>} />
-        <Route path="/bookings/:pnr" element={<RequireAuth><Ticket /></RequireAuth>} />
-        <Route path="/trips" element={<RequireAuth><Trips /></RequireAuth>} />
-        <Route path="/manage" element={<RequireAuth><ManageBooking /></RequireAuth>} />
+        {/* Signed in */}
+        <Route path="/bookings/:pnr" element={<RequireAuth><TicketPage /></RequireAuth>} />
+        <Route path="/trips" element={<RequireAuth><TripsPage /></RequireAuth>} />
+        <Route path="/find" element={<RequireAuth><FindBookingPage /></RequireAuth>} />
 
-        {/* Admin */}
-        <Route path="/admin" element={<RequireAuth admin><Dashboard /></RequireAuth>} />
-        <Route path="/admin/flights" element={<RequireAuth admin><Flights /></RequireAuth>} />
-        <Route path="/admin/flights/new" element={<RequireAuth admin><FlightForm /></RequireAuth>} />
-        <Route path="/admin/flights/:id/edit" element={<RequireAuth admin><FlightForm /></RequireAuth>} />
-        <Route path="/admin/bookings" element={<RequireAuth admin><Bookings /></RequireAuth>} />
+        {/* Admins */}
+        <Route path="/admin/flights" element={<RequireAuth admin><AdminFlightsPage /></RequireAuth>} />
+        <Route path="/admin/flights/new" element={<RequireAuth admin><AdminFlightFormPage /></RequireAuth>} />
+        <Route path="/admin/flights/:id/edit" element={<RequireAuth admin><AdminFlightFormPage /></RequireAuth>} />
+        <Route path="/admin/bookings" element={<RequireAuth admin><AdminBookingsPage /></RequireAuth>} />
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

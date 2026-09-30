@@ -1,0 +1,7 @@
+# Local Claude Code settings (launch.json holds a local-only JWT secret)
+.claude/
+
+# Scratch output from design reviews; the design record itself
+# (.impeccable/design.json and .impeccable/surfaces/) is kept
+.impeccable/review/
+.impeccable/questions/

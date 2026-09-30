@@ -5,10 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    // The backend only accepts requests from CLIENT_URL (localhost:5173). If
-    // this port is busy, Vite would normally drift to 5174, where every API
-    // call would then be blocked by CORS with a confusing browser error.
-    // Failing loudly here is much easier to diagnose.
+    // The backend only accepts requests from CLIENT_URL (localhost:5173).
+    // If this port is busy Vite would quietly move to 5174, and every API call
+    // would then fail with a confusing CORS error. Failing loudly is clearer.
     strictPort: true
   }
 });
