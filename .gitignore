@@ -5,3 +5,6 @@
 # (.impeccable/design.json and .impeccable/surfaces/) is kept
 .impeccable/review/
 .impeccable/questions/
+
+# Claude Code instructions stay on your machine, not in the repo
+CLAUDE.md
