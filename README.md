@@ -250,8 +250,8 @@ Authorization: Bearer <token>
 
 ### Response shapes — read this first
 
-The API is **not** uniform about wrapping, and this is deliberate — it follows the frozen contract
-in `backend/CLAUDE.md` literally:
+The API is **not** uniform about wrapping, and this is deliberate — it follows the frozen API contract
+from the approved SDD literally:
 
 - Endpoints that return **a list** return a **bare array**: `[ {...}, {...} ]`
 - Endpoints that return **one object** return it **wrapped under a key**: `{ "flight": {...} }` or

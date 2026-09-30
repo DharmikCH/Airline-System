@@ -49,7 +49,7 @@ idempotent cancellation that returns the seat exactly once.
 
 ## Capabilities and Constraints
 
-- **The API contract is frozen** (`README.md`, `backend/CLAUDE.md`). Changes need approval and a
+- **The API contract is frozen** (the approved SDD, documented in `README.md`). Changes need approval and a
   dated entry in `API-CHANGELOG.md`.
 - Lists come back as bare arrays; single objects come back wrapped (`{ flight }`, `{ booking }`).
   How much related data is included differs per endpoint.
