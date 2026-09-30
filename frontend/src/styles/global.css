@@ -1,0 +1,322 @@
+/* Base styles and the small set of shared building blocks every page uses. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+h1, h2, h3 { margin: 0; letter-spacing: -0.015em; line-height: 1.2; }
+h1 { font-size: 30px; font-weight: 650; }
+h2 { font-size: 20px; font-weight: 620; }
+h3 { font-size: 16px; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.muted { color: var(--muted); }
+.text-2 { color: var(--text-2); }
+.mono { font-family: var(--mono); }
+.nums { font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.spacer { flex: 1; }
+
+/* A page fades in when the route changes. Navigation happens many times a
+   session, so there is no movement, only a short fade. */
+.page { flex: 1; padding: 32px 0 64px; animation: page-in 160ms var(--ease) both; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+
+.page-head { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.page-head p { margin-top: 6px; color: var(--text-2); }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  font-weight: 560;
+  font-size: 14px;
+  line-height: 1;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  /* Name the properties. Never transition: all. */
+  transition: transform 160ms var(--ease-out), background-color 150ms var(--ease),
+    border-color 150ms var(--ease), opacity 150ms var(--ease);
+}
+.btn:hover { text-decoration: none; }
+/* Pressing scales the button slightly: proof the interface heard the click. */
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn:disabled:active { transform: none; }
+
+.btn--primary { background: var(--brand); color: var(--on-brand); }
+.btn--ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn--danger { background: var(--err); color: #fff; }
+.btn--quiet { background: transparent; color: var(--text-2); padding-left: 10px; padding-right: 10px; }
+.btn--sm { padding: 8px 12px; font-size: 13px; }
+.btn--lg { padding: 14px 22px; font-size: 15px; }
+.btn--block { width: 100%; }
+
+/* Hover only on devices that really hover, so a tap on a phone does not
+   leave a button stuck in its hover colour. */
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover:not(:disabled) { background: var(--brand-hover); }
+  .btn--ghost:hover:not(:disabled) { border-color: var(--border-strong); }
+  .btn--quiet:hover:not(:disabled) { color: var(--text); background: var(--surface-2); }
+}
+
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+/* ---------- Forms ---------- */
+
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field > span {
+  font-size: 12px;
+  font-weight: 560;
+  color: var(--text-2);
+  letter-spacing: 0.01em;
+}
+.field small { color: var(--muted); font-size: 12px; }
+
+.input {
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  width: 100%;
+  min-width: 0;
+  transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
+}
+.input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+.input[readonly] { background: var(--surface-2); color: var(--text-2); }
+select.input { cursor: pointer; }
+
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.form-grid .span-2 { grid-column: span 2; }
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .span-2 { grid-column: auto; }
+}
+
+/* ---------- Surfaces ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.card--pad { padding: 22px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 560;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.badge--ok { background: var(--ok-soft); color: var(--ok); }
+.badge--warn { background: var(--warn-soft); color: var(--warn); }
+.badge--err { background: var(--err-soft); color: var(--err); }
+.badge--brand { background: var(--brand-soft); color: var(--brand); }
+
+.banner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+.banner--error { background: var(--err-soft); color: var(--err); }
+.banner--success { background: var(--ok-soft); color: var(--ok); }
+.banner--info { background: var(--brand-soft); color: var(--brand); }
+.banner--warn { background: var(--warn-soft); color: var(--warn); }
+.banner strong { font-weight: 620; }
+
+.empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-2);
+}
+.empty h3 { color: var(--text); margin-bottom: 6px; }
+.empty .btn { margin-top: 18px; }
+
+/* ---------- Tabs ---------- */
+
+.tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--surface-2);
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+.tab {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 560;
+  color: var(--text-2);
+  background: transparent;
+  border: 0;
+  padding: 8px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease), color 150ms var(--ease);
+}
+.tab[aria-selected='true'] { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+.tab .count { color: var(--muted); font-weight: 500; margin-left: 4px; }
+
+/* ---------- Tables (admin) ---------- */
+
+/* Wide tables scroll inside their own box so the page never scrolls sideways. */
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.table td { padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.table tr:last-child td { border-bottom: 0; }
+.table .actions { text-align: right; white-space: nowrap; }
+.table .actions .btn + .btn { margin-left: 6px; }
+
+/* ---------- Toasts ---------- */
+
+/* Toasts rise from and return to the bottom edge, so the motion is spatially
+   consistent. They use transitions, not keyframes, so a burst of toasts
+   retargets smoothly instead of restarting. */
+.toasts {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  max-width: 360px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--muted);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 240ms var(--ease), transform 280ms var(--ease-out);
+}
+.toast.is-in { opacity: 1; transform: translateY(0); }
+.toast--success { border-left-color: var(--ok); }
+.toast--error { border-left-color: var(--err); }
+
+/* ---------- Skeletons ---------- */
+
+.skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--border) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  /* Constant motion, so linear is the right curve. */
+  animation: shimmer 1.2s linear infinite;
+}
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* ---------- Dialog ---------- */
+
+/* Native <dialog> gives focus trapping, Escape to close and a backdrop for
+   free. It stays centred because a modal is not anchored to any trigger. */
+.dialog {
+  border: 0;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  width: min(440px, calc(100vw - 32px));
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out),
+    overlay 200ms allow-discrete, display 200ms allow-discrete;
+}
+/* Enter from slightly smaller, never from nothing. */
+@starting-style { .dialog[open] { opacity: 0; transform: scale(0.95); } }
+/* Leaving is quicker than arriving: the user has already decided. */
+.dialog:not([open]) {
+  opacity: 0;
+  transform: scale(0.97);
+  transition-duration: 140ms;
+}
+.dialog::backdrop {
+  background: rgb(10 10 12 / 0.45);
+  transition: background-color 200ms var(--ease), overlay 200ms allow-discrete, display 200ms allow-discrete;
+}
+@starting-style { .dialog[open]::backdrop { background: rgb(10 10 12 / 0); } }
+.dialog__body { padding: 24px 24px 20px; }
+.dialog__body p { color: var(--text-2); margin-top: 8px; }
+.dialog__foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 24px 20px;
+}
+
+/* ---------- Staggered entrance for lists ---------- */
+
+.enter {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: enter 300ms var(--ease-out) forwards;
+}
+@keyframes enter { to { opacity: 1; transform: translateY(0); } }
+
+/* ---------- Reduced motion ---------- */
+
+/* Fewer and gentler, not zero: keep the fades that aid comprehension, drop
+   anything that moves. */
+@media (prefers-reduced-motion: reduce) {
+  .btn:active { transform: none; }
+  .enter { transform: none; animation: fade 200ms var(--ease) forwards; }
+  @keyframes fade { to { opacity: 1; } }
+  .toast, .toast.is-in { transform: none; }
+  .dialog, .dialog:not([open]) { transform: none; }
+  @starting-style { .dialog[open] { transform: none; } }
+  .skeleton { animation: none; }
+}

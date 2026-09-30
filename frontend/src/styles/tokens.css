@@ -1,0 +1,86 @@
+/* Design tokens. Every colour, radius and curve in the app comes from here,
+   so light and dark mode are a single swap of these values. */
+
+:root {
+  color-scheme: light;
+
+  --bg: #f6f6f3;
+  --surface: #ffffff;
+  --surface-2: #f0efeb;
+  --border: #e3e1dc;
+  --border-strong: #cdc9c2;
+
+  --text: #1a1917;
+  --text-2: #5c5852;
+  /* The lightest grey that still clears WCAG AA (4.5:1) on --bg, --surface
+     and --surface-2. It carries small text: seat counts, hints, the footer. */
+  --muted: #6f6a62;
+
+  --brand: #2a45c2;
+  --brand-hover: #2139a8;
+  --brand-soft: #edf0fc;
+  --on-brand: #ffffff;
+
+  --ok: #2c7a4d;
+  --ok-soft: #e8f4ec;
+  --warn: #9d5f08;
+  --warn-soft: #fcf2e1;
+  --err: #b33434;
+  --err-soft: #fbebeb;
+
+  /* The hero is always dark, in both themes, so its colours are fixed. */
+  --hero-from: #16266e;
+  --hero-to: #2f4fd4;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 1px 2px rgb(20 18 15 / 0.05);
+  --shadow: 0 1px 2px rgb(20 18 15 / 0.04), 0 8px 24px rgb(20 18 15 / 0.06);
+  --shadow-lg: 0 24px 60px rgb(20 18 15 / 0.2);
+
+  /* Built-in CSS easings are too weak to feel intentional. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font: ui-sans-serif, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg: #10100f;
+    --surface: #191917;
+    --surface-2: #22221f;
+    --border: #2d2c29;
+    --border-strong: #3e3c38;
+
+    --text: #efede8;
+    --text-2: #b4afa7;
+    /* Same rule as the light theme: 4.5:1 on every dark background. */
+    --muted: #8f8a81;
+
+    --brand: #7f96ff;
+    --brand-hover: #98abff;
+    --brand-soft: #1c2240;
+    --on-brand: #0e1124;
+
+    --ok: #67b98b;
+    --ok-soft: #15251b;
+    --warn: #e0a24c;
+    --warn-soft: #2a2114;
+    --err: #e97b75;
+    --err-soft: #2b1817;
+
+    --hero-from: #0d1640;
+    --hero-to: #22389c;
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.55);
+  }
+}

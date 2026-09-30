@@ -1,0 +1,65 @@
+.admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.admin-nav .badge { margin-right: 10px; }
+.admin-nav a {
+  font-size: 14px;
+  font-weight: 560;
+  color: var(--text-2);
+  padding: 7px 12px;
+  border-radius: 8px;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease);
+}
+.admin-nav a:hover { text-decoration: none; color: var(--text); }
+.admin-nav a.active { color: var(--text); background: var(--surface-2); }
+
+/* ---------- KPI row ---------- */
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; }
+@media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.kpi { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.kpi__label { font-size: 13px; font-weight: 560; color: var(--text-2); }
+/* Proportional figures, not tabular: at this size equal-width digits make a
+   number like 121 look loose. Value stays in text ink, never a status colour. */
+.kpi__value { font-size: 32px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; color: var(--text); }
+.kpi__note { font-size: 12px; color: var(--muted); }
+
+.admin-section { padding: 6px 0 0; }
+.admin-section__head { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px 8px; }
+.admin-section__head a { font-size: 14px; }
+
+/* ---------- Filters row ---------- */
+
+.admin-filters {
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) repeat(4, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.admin-filters:has(> :nth-child(2):last-child) { grid-template-columns: minmax(200px, 2fr) minmax(140px, 1fr); }
+@media (max-width: 900px) { .admin-filters, .admin-filters:has(> :nth-child(2):last-child) { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .admin-filters, .admin-filters:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; } }
+
+/* ---------- Table extras ---------- */
+
+.table .nowrap { white-space: nowrap; }
+.cell-strong { font-weight: 600; }
+.cell-sub { font-size: 12px; margin-top: 2px; }
+.table tr.is-dim td:not(.actions) { opacity: 0.55; }
+
+/* ---------- Seat meter ---------- */
+
+.seat-meter { display: flex; flex-direction: column; gap: 5px; min-width: 96px; font-size: 13px; }
+.meter { display: block; height: 5px; border-radius: 3px; overflow: hidden; background: var(--brand-soft); }
+.meter span { display: block; height: 100%; border-radius: 3px; background: var(--brand); }
+/* The track is always a lighter step of the fill's own colour. */
+.meter--low { background: var(--warn-soft); }
+.meter--low span { background: var(--warn); }
+.meter--full { background: var(--err-soft); }
+.meter--full span { background: var(--err); }
